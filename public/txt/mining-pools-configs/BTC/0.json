@@ -1,0 +1,26 @@
+{
+	"payout_addresses" : {
+		 "TjkcExXZpSvAMpqF8XQ6DLuaFT2yG2PnKbIs" : {
+            "name" : "zergpool",
+            "link" : "https://zergpool.com/"
+        },
+		 "TgdnysXLUXcboD4jvehbsg67CEbK878UBm" : {
+            "name" : "Rplant",
+            "link" : "http://pool.rplant.xyz/"
+        }		
+	},
+	"coinbase_tags" : {
+		 	"RPLANT": {
+			"name": "Rplant",
+			"link": "http://pool.rplant.xyz/"
+		},
+			"/RPLANT/": {
+			"name": "Rplant",
+			"link": "http://pool.rplant.xyz/"
+		},
+			"RPLANT/": {
+			"name": "Rplant",
+			"link": "http://pool.rplant.xyz/"
+		}
+	}
+}
