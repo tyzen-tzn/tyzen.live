@@ -498,16 +498,23 @@ module.exports = {
 	historicalData: btcFun.items,
 	exchangeRateData:{
 		jsonUrl: "https://www.exbitron.com/api/v2/peatio/public/markets/tznusdt/tickers",
-		responseBodySelectorFunction: responseBody => {
-			//console.log("Exchange Rate Response: " + JSON.stringify(responseBody));
-
-			if (responseBody) {
-                return responseBody['ticker'].last;
+        responseBodySelectorFunction: responseBody => {
+		var exchangedCurrencies = ["USD"];
+		
+            if (responseBody) {
+		    var exchangeRates = {};
+		    
+		    for (var i = 0; i < exchangedCurrencies.length; i++) {
+					if (responseBody) {
+						exchangeRates[exchangedCurrencies[i].toLowerCase()] = responseBody.ticker.last;
+					}
+				}
+		    
+                return exchangeRates;
             }
-			
-			return null;
-		}
-	},
+            return null;
+        }
+    },
 	goldExchangeRateData:{
 		jsonUrl:"https://forex-data-feed.swissquote.com/public-quotes/bboquotes/instrument/XAU/USD",
 		responseBodySelectorFunction:function(responseBody) {
