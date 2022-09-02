@@ -25,11 +25,6 @@ if (exchangeRates)
 					span.me-1 #{formatData.symbol}
 					| #{formatData.val}
 
-			+summaryItem("Sats Rate")
-				- var satsRateData = utils.satoshisPerUnitOfLocalCurrency(userSettings.localCurrency);
-				span #{satsRateData.amt}
-					small  #{satsRateData.unit}
-
 			+summaryItem("Market Cap")
 				- var supply = utils.estimatedSupply(getblockchaininfo.blocks);
 				- var mcapData = utils.formatLargeNumber(parseFloat(supply) * global.exchangeRates[userSettings.localCurrency], 3);
