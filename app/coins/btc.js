@@ -501,11 +501,11 @@ module.exports = {
 		responseBodySelectorFunction:function(responseBody) {
 			//console.log("Exchange Rate Response: " + JSON.stringify(responseBody));
 
-			if (responseBody) {
-				var prices = responseBody;
+			if (responseBody[0]) {
+				var prices = responseBody[0];
 				
 				return {
-					usd: last
+					usd: prices.last
 				};
 			}
 			
