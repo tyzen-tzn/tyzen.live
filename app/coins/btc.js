@@ -497,22 +497,16 @@ module.exports = {
 	genesisCoinbaseOutputAddressScripthash:"8b01df4e368ea28f8dc0423bcf7a4923e3a12d307c875e47a0cfbf90b5c39161",
 	historicalData: btcFun.items,
 	exchangeRateData:{
-		jsonUrl:"https://api.coindesk.com/v1/bpi/currentprice.json",
+		jsonUrl:"https://www.exbitron.com/api/v2/peatio/public/markets/tznusdt/tickers",
 		responseBodySelectorFunction:function(responseBody) {
 			//console.log("Exchange Rate Response: " + JSON.stringify(responseBody));
 
-			var exchangedCurrencies = ["USD", "GBP", "EUR"];
-
-			if (responseBody.bpi) {
-				var exchangeRates = {};
-
-				for (var i = 0; i < exchangedCurrencies.length; i++) {
-					if (responseBody.bpi[exchangedCurrencies[i]]) {
-						exchangeRates[exchangedCurrencies[i].toLowerCase()] = responseBody.bpi[exchangedCurrencies[i]].rate_float;
-					}
-				}
-
-				return exchangeRates;
+			if (responseBody) {
+				var prices = responseBody;
+				
+				return {
+					usd: last
+				};
 			}
 			
 			return null;
