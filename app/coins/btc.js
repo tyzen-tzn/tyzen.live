@@ -497,17 +497,13 @@ module.exports = {
 	genesisCoinbaseOutputAddressScripthash:"8b01df4e368ea28f8dc0423bcf7a4923e3a12d307c875e47a0cfbf90b5c39161",
 	historicalData: btcFun.items,
 	exchangeRateData:{
-		jsonUrl:"https://www.exbitron.com/api/v2/peatio/public/markets/tznusdt/tickers",
-		responseBodySelectorFunction:function(responseBody) {
+		jsonUrl: "https://www.exbitron.com/api/v2/peatio/public/markets/tznusdt/tickers",
+		responseBodySelectorFunction: responseBody => {
 			//console.log("Exchange Rate Response: " + JSON.stringify(responseBody));
 
-			if (responseBody[0]) {
-				var prices = responseBody[0];
-				
-				return {
-					usd: prices.last
-				};
-			}
+			if (responseBody) {
+                return responseBody['ticker'].last;
+            }
 			
 			return null;
 		}
